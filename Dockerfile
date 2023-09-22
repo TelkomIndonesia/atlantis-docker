@@ -1,5 +1,7 @@
 FROM ghcr.io/runatlantis/atlantis:latest
 
+RUN apk update && apk add jq
+
 RUN curl -LO https://github.com/plumber-cd/terraform-backend-git/releases/download/v0.1.5/terraform-backend-git-linux-amd64
 
 # Rename the downloaded binary to "terraform-backend-git"
