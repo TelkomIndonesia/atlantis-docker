@@ -1,5 +1,7 @@
 FROM ghcr.io/runatlantis/atlantis:latest
 
+USER root
+
 RUN apk update && apk add jq
 
 RUN curl -LO https://github.com/plumber-cd/terraform-backend-git/releases/download/v0.1.5/terraform-backend-git-linux-amd64
@@ -17,3 +19,4 @@ RUN mv vault /usr/local/bin/vault
 RUN curl -LO https://releases.hashicorp.com/consul-template/0.33.0/consul-template_0.33.0_linux_amd64.zip && unzip consul-template_0.33.0_linux_amd64.zip
 
 RUN mv consul-template /usr/local/bin/consul-template
+USER atlantis
